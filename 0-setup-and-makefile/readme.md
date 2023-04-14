@@ -29,6 +29,7 @@ CFLAGS="-Wall" make ex1
 
 1. Create environment variable CFLAGS="-Wall"
 	- Command line option to add "-Wall" to cc command that make runs
+	- -Wall enables all of the compiler's warning messages
 ```
 
 - Instead of running make, we can create a Makefile
