@@ -27,7 +27,7 @@
 |Operator|Description|
 |--------|-----------|
 |&&|logical and|
-| || |logical or|
+| \|| |logical or|
 |!|logical not|
 |? :|logical ternary|
 
@@ -52,7 +52,7 @@
 |%=|modulus equal|
 |&=|and equal|
 |^=|xor equal|
-||=|or equal|
+| \|= |or equal|
 
 ### Data operators
 |Operator|Description|
