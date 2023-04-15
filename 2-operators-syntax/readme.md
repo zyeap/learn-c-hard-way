@@ -27,7 +27,7 @@
 |Operator|Description|
 |--------|-----------|
 |&&|logical and|
-| \|| |logical or|
+| \|\| | logical or|
 |!|logical not|
 |? :|logical ternary|
 
@@ -35,7 +35,7 @@
 |Operator|Description|
 |--------|-----------|
 |&|bitwise and|
-|||bitwise or|
+|\||bitwise or|
 |^|bitwise xor|
 |~|bitwise one's complement|
 |<<|bitwise shift left|
