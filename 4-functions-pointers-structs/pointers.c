@@ -20,7 +20,16 @@ int main(int argc, char *argv[]) {
 	// set up pointers to start of arrays
 	// create pointer (cur_age) that points to an integer type
 	int *cur_age = ages;
-	printf("The first age is %d\n", *cur_age); // Alan
+	printf("The first age is %d\n", *cur_age); // 23
+	printf("cur_age is a pointer to this location in memory: %p\n", (void*)&cur_age); 
+	printf("cur_age + 1 is a pointer to this location in memory: %p\n", (void*)&cur_age + 1); 
+	printf("cur_age holds this value: %d\n", *cur_age); 
+	printf("cur_age + 1 holds this value: %d\n", *(cur_age + 1)); 
+
+	// cur_age is a pointer to this location in memory: 0x7ffea1e2a000
+	// cur_age + 1 is a pointer to this location in memory: 0x7ffea1e2a001
+	// cur_age holds this value: 23
+	// cur_age + 1 holds this value: 43
 	
 	// ** = pointer to pointer of char
 	// **cur_name -> A
