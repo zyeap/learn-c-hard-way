@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
 	// another way to declare and initialize a string
 	// * is indirection operator
 	// get the data from where the pointer "another" is pointing to
+	// https://stackoverflow.com/questions/27644383/understanding-two-ways-of-declaring-a-c-string
 	char *another = "Jack";
 	printf("another name: %s\n", another);
 	printf("another each: %c %c %c %c\n",

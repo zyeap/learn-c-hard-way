@@ -5,6 +5,8 @@ int main(int argc, char *argv[]) {
 
 	// think of string type as an array of pointers to chars
 	// array of strings is an array of an array of pointers to chars
+	// char *name is an address that points to a char/char array
+	// char *name[] is an array of addresses that point to char/char arrays
 	char *names[] = {"Alan", "Frank", "Mary", "John", "Lisa"};
 
 	int count = sizeof(ages) / sizeof(int);
@@ -21,8 +23,8 @@ int main(int argc, char *argv[]) {
 	// create pointer (cur_age) that points to an integer type
 	int *cur_age = ages;
 	printf("The first age is %d\n", *cur_age); // 23
-	printf("cur_age is a pointer to this location in memory: %p\n", (void*)&cur_age); 
-	printf("cur_age + 1 is a pointer to this location in memory: %p\n", (void*)&cur_age + 1); 
+	printf("cur_age is a pointer to this location in memory: %p\n", cur_age); 
+	printf("cur_age + 1 is a pointer to this location in memory: %p\n", cur_age + 1); 
 	printf("cur_age holds this value: %d\n", *cur_age); 
 	printf("cur_age + 1 holds this value: %d\n", *(cur_age + 1)); 
 
@@ -37,24 +39,40 @@ int main(int argc, char *argv[]) {
 	char **cur_name = names;
 	printf("The first name is %s\n", *cur_name); // 23
 
+	printf("---\n");
+
 	// reference by pointer
-	for (i = 0; i < count; i++) {
-		// print out each pointer value offset by i
-		printf("%s is %d years old.\n", *(cur_name + i), *(cur_age + i));
+	int j = 0;
+	while (j < count) {
+		// print out each pointer value offset by j
+		printf("%s has %d bananas.\n", *(cur_name + j), *(cur_age + j));
+		printf("%s is at %p location in memory.\n", *(cur_name + j), cur_name + j);
+		printf("%d is at %p location in memory.\n", *(cur_age + j), cur_age + j);
+		j++;
 	}
 
 	printf("---\n");
 
 	// pointers can be indexed
-	for (i = 0; i < count; i++) {
+	// reverse loop from end to beginning
+	for (i = count - 1; i >= 0; i--) {
 		printf("%s is %d years old.\n", cur_name[i], cur_age[i]);
 	}
 
 	printf("---\n");
 
 	// another complex way with pointers
+	// difference between cur_age and ages (starting point) will be the index of value
 	for (cur_name = names, cur_age = ages; (cur_age - ages) < count; cur_name++, cur_age++){
 		printf("%s lived %d years so far.\n", *cur_name, *cur_age);
+	}
+
+	printf("---\n");
+
+	// process command line args using pointers
+	char **cur_arg = argv;
+	for (i = 0; i < argc; i++) {
+		printf("Argument at position %d: %s\n", i, *(cur_arg + i));
 	}
 }
 
