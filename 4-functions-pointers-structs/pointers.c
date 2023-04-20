@@ -28,10 +28,13 @@ int main(int argc, char *argv[]) {
 	printf("cur_age holds this value: %d\n", *cur_age); 
 	printf("cur_age + 1 holds this value: %d\n", *(cur_age + 1)); 
 
-	// cur_age is a pointer to this location in memory: 0x7ffea1e2a000
-	// cur_age + 1 is a pointer to this location in memory: 0x7ffea1e2a001
+	// The first age is 23
+	// cur_age is a pointer to this location in memory: 0x16eeaee90
+	// cur_age + 1 is a pointer to this location in memory: 0x16eeaee94
 	// cur_age holds this value: 23
 	// cur_age + 1 holds this value: 43
+	// The first name is Alan
+
 	
 	// ** = pointer to pointer of char
 	// **cur_name -> A

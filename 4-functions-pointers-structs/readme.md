@@ -1,4 +1,6 @@
 # Functions, pointers, and structs
+- for help with functions run `man 3 <function name>`
+- `man 3` is for C library functions
 
 ## Functions
 ```
@@ -43,15 +45,17 @@ int ages[] = {23, 43, 12 ,89, 2};
 	```
 	int *cur_age = ages;
 	printf("The first age is %d\n", *cur_age); // 23
-	printf("cur_age is a pointer to this location in memory: %p\n", (void*)&cur_age); 
-	printf("cur_age + 1 is a pointer to this location in memory: %p\n", (void*)&cur_age + 1); 
+	printf("cur_age is a pointer to this location in memory: %p\n", cur_age); 
+	printf("cur_age + 1 is a pointer to this location in memory: %p\n", cur_age + 1); 
 	printf("cur_age holds this value: %d\n", *cur_age); 
 	printf("cur_age + 1 holds this value: %d\n", *(cur_age + 1)); 
 
-	// cur_age is a pointer to this location in memory: 0x7ffea1e2a000
-	// cur_age + 1 is a pointer to this location in memory: 0x7ffea1e2a001
+	// The first age is 23
+	// cur_age is a pointer to this location in memory: 0x16eeaee90
+	// cur_age + 1 is a pointer to this location in memory: 0x16eeaee94
 	// cur_age holds this value: 23
 	// cur_age + 1 holds this value: 43
+	// The first name is Alan
 	```
 
 - Purpose + usage
@@ -79,3 +83,32 @@ type *ptr = &thing	>>	pointer of type named ptr set to address of thing
 ptr++			>>	increment where ptr points
 ```
 
+## Structs
+- A structure (struct) is a collection of data types that are stored in one block of memory
+	- we can access each variable within the struct independently by name
+``` 
+Syntax
+
+struct Person {
+	char *name;
+	int age;
+	int height;
+	int weight;
+};
+
+struct Person *Person_create(char *name, int age, int height, int weight) {
+	// get the size in bytes of the Person struct and allocate it to the who pointer
+	// who is a pointer of type (struct Person) that holds the starting memory address
+	struct Person *who = malloc(sizeof(struct Person));
+	assert(who != NULL);
+
+	// initialize each field 
+	who->name = strdup(name); // strdup duplicates the string for the name (ensures the structure owns it), aka copying original string into newly created memory
+	who->age = age;
+	who->height = height;
+	who->weight = weight;
+
+	return who;
+}
+
+```

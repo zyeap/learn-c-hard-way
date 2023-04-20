@@ -34,6 +34,7 @@ int main(int argc, char *argv[]) {
 	// * is indirection operator
 	// get the data from where the pointer "another" is pointing to
 	// https://stackoverflow.com/questions/27644383/understanding-two-ways-of-declaring-a-c-string
+	// https://stackoverflow.com/questions/15168771/pointer-to-a-string-in-c
 	char *another = "Jack";
 	printf("another name: %s\n", another);
 	printf("another each: %c %c %c %c\n",
