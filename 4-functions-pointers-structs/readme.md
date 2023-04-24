@@ -112,3 +112,21 @@ struct Person *Person_create(char *name, int age, int height, int weight) {
 }
 
 ```
+
+## Heap vs Stack memory allocation
+- Stack stores temporary variables in computer's RAM
+	- By default in C, variables are on the stack
+	- Argument for a function is pushed onto the stack, used inside the function, then popped off the stack
+	- C compiler prevents memory leaks on stack by cleaning up usage automatically
+	- Freeing a block from stack is simply adjusting pointer (since the most recently reserved block is next to be freed)
+	- LIFO structure
+
+- Heap also stores variables in RAM, but is set aside for dynamic allocation
+	- No enforced allocation/deallocation
+	- slower access when compared to stack
+	- Use `malloc()` to allocate memory on the heap, and `free` is neede to deallocate memory
+
+- Potential issues with memory allocation
+	1. If you get a block of memory from malloc and have the pointer on the stack, when the function exits the pointer is lost
+	2. Too much data on the stack (large structs, arrays) can cause a stack overflow error
+	3. Passing/returning a pointer to something on the stack to another function will result in segfault, since the actual data will get popped off.

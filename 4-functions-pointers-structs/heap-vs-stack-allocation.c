@@ -45,8 +45,10 @@ void Database_load(struct Connection *conn) {
 }
 
 struct Connection *Database_open(const char *filename, char mode) {
+	// using malloc to ask for large amount of memory on the heap
 	struct Connection *conn = malloc(sizeof(struct Connection));
 
+	// ensure pointer to conn is not null
 	if (!conn)
 		die("Memory error");
 
@@ -111,7 +113,7 @@ void Database_set(struct Connection *conn, int id, const char *name, const char 
 
 	addr->set = 1;
 
-	// BUG
+	// BUG -- strncpy doesn't add \0 (NUL byte) to the end of the string
 	char *res = strncpy(addr->name, name, MAX_DATA);
 	// demonstrate bug
 	if (!res)
@@ -133,6 +135,8 @@ void Database_get(struct Connection *conn, int id) {
 }
 
 void Database_delete(struct Connection *conn, int id) {
+	// initialize id/set fields in temporary local Address struct
+	// assign addr to that row, essentially overriding the existing entry
 	struct Address addr = {.id = id, .set = 0};
 	conn->db->rows[id] = addr;
 }
@@ -159,6 +163,7 @@ int main(int argc, char *argv[]) {
 	struct Connection *conn = Database_open(filename, action);
 	int id = 0;
 	
+	// atoi function takes string for id and converts it into int (ASCII string to integer)
 	if (argc > 3) id = atoi(argv[3]);
 	if (id >= MAX_ROWS) die("There's not that many records");
 
