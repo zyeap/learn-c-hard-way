@@ -130,3 +130,16 @@ struct Person *Person_create(char *name, int age, int height, int weight) {
 	1. If you get a block of memory from malloc and have the pointer on the stack, when the function exits the pointer is lost
 	2. Too much data on the stack (large structs, arrays) can cause a stack overflow error
 	3. Passing/returning a pointer to something on the stack to another function will result in segfault, since the actual data will get popped off.
+
+## Pointers to functions
+- Useful for function callbacks or simulating classes/objects
+- Syntax for function pointer
+	```
+	int (*some_pointer) (int a, int b)
+	<return type> (*pointer_name) (arguments...)
+
+	Same syntax even if we return a pointer from the function
+	ex: int *(*some_pointer) (int a, int b)
+	```
+- `typedef` can be used together with function pointers to declare more complex types
+	- after declaring with typedef, we can use the function pointer's name as if it is an existing type
